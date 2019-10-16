@@ -102,6 +102,27 @@ module WordpressClient
       connection.delete("posts/#{id.to_i}", {"force" => force})
     end
 
+    # Search {Post Posts} matching given parameters.
+    #
+    # @example Finding 5 posts about debt
+    #   posts = client.search('debt', per_page: 5)
+    #
+    # @param search [String] Keyword for the search
+    # @param page [Fixnum] Current page for pagination. Defaults to 1.
+    # @param per_page [Fixnum] Posts per page. Defaults to 10.
+    #
+    # @return {PaginatedCollection[Post]} Paginated collection of the found posts.
+    def search(search, params = {})
+      params[:_embed] ||= nil
+      params[:per_page] ||=  10
+      params[:page] ||= 1 
+      connection.get_multiple(
+        Post,
+        "search?search=#{search}",
+        params
+      )
+    end
+
     # @!group Categories
 
     # Find {Category Categories} in the Wordpress install.
