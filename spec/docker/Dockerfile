@@ -1,11 +1,5 @@
 FROM appcontainers/wordpress
 
-# Wordpress latest isn't actually the lastest we want to be on the bleeding edge
-RUN rm -rf /var/www/html/
-RUN wget -P /var/www/html/ https://wordpress.org/latest.zip && \
-  unzip /var/www/html/latest.zip -d /var/www/html/ && \
-  rm -fr /var/www/html/latest.zip
-
 # Copy the WP-Config file
 RUN cp /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php
 
