@@ -1,0 +1,53 @@
+  {
+    "id": 5517,
+    "post": 1680,
+    "parent": 5516,
+    "author": 1,
+    "author_name": "author",
+    "author_url": "www.example.com",
+    "date": "2020-05-29T11:19:08",
+    "date_gmt": "2020-05-29T09:19:08",
+    "content": {
+      "rendered": "<p>Hi thanks for commenting!</p>"
+    },
+    "link": "http://example.com/2015/11/03/hello-world/#comment-5517",
+    "status": "approved",
+    "type": "comment",
+    "author_avatar_urls": {
+      "24": "http://2.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0?s=24&d=mm&r=g",
+      "48": "http://2.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0?s=48&d=mm&r=g",
+      "96": "http://2.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0?s=96&d=mm&r=g"
+    },
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https:\\/\\/www.example.com\\/wp-json\\/wp\\/v2\\/comments\\/5517"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https:\\/\\/www.example.com\\/wp-json\\/wp\\/v2\\/comments"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https:\\/\\/www.example.com\\/wp-json\\/wp\\/v2\\/users\\/7"
+        }
+      ],
+      "up": [
+        {
+          "embeddable": true,
+          "post_type": "post",
+          "href": "https:\\/\\/www.example.com\\/wp-json\\/wp\\/v2\\/posts\\/1680"
+        }
+      ],
+      "in-reply-to": [
+        {
+          "embeddable": true,
+          "href": "https:\\/\\/www.example.com\\/wp-json\\/wp\\/v2\\/comments\\/5516"
+        }
+      ]
+    }
+  }

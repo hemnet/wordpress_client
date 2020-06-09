@@ -243,5 +243,33 @@ module WordpressClient
         expect(client.update_media(7, title: "New")).to eq media
       end
     end
+
+    describe "comments" do
+      it "can be found" do
+        expect(connection).to receive(:get_multiple).with(
+          Comment, "comments", hash_including(page: 2, per_page: 13, post: 4)
+        ).and_return []
+
+        expect(client.comments(per_page: 13, page: 2, post: 4)).to eq []
+      end
+      
+      it "can be created" do
+        comment = instance_double(Comment, id: 3)
+        attributes = { content: "Foo" }
+
+        expect(connection).to receive(:create).with(
+          Comment, "comments", attributes
+        ).and_return comment
+
+        # We don't expect here as the `create` call below could be enough, but
+        # it's also very possible that we need to fetch the post again after
+        # doing other things to it.
+        allow(connection).to receive(:get).with(
+          Comment, "comments/3"
+        ).and_return(comment)
+
+        expect(client.create_comment(attributes)).to eq comment
+      end
+    end
   end
 end
