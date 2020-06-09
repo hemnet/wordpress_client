@@ -286,6 +286,42 @@ module WordpressClient
       connection.put(Media, "media/#{id.to_i}", attributes)
     end
 
+    # @!group Comments
+
+    # Find {Comment Comments} matching given parameters.
+    #
+    # @example Finding 10 comments of a post with id 1
+    #   comments = client.comments(per_page: 10, post: 1)
+    #
+    # @param post [Fixnum] Id of the post the comment(s) belong to. Required.
+    # @param page [Fixnum] Current page for pagination. Defaults to 1.
+    # @param per_page [Fixnum] Comments per page. Defaults to 10.
+    #
+    # @return {PaginatedCollection[Comment]} Paginated collection of the found comments.
+    def comments(per_page: 10, page: 1, post: nil)
+      connection.get_multiple(
+        Comment,
+        "comments",
+        per_page: per_page,
+        page: page,
+        post: post
+      )
+    end
+
+    # Create a new {Comment} with the given attributes in Wordpress and return it.
+    #
+    # @param attributes [Hash<Symbol,Object>] attribute list, containing
+    #                   accepted parameters or the custom parameters listed
+    #                   above.
+    # @return {Comment}
+    # @raise {ValidationError}
+    # @raise {subclasses of Error} on other unexpected errors
+    #
+    # @see http://v2.wp-api.org/reference/comments/ List of accepted parameters
+    def create_comment(attributes)
+      connection.create(Comment, "comments", attributes)
+    end
+
     # @!endgroup
 
     def inspect
